@@ -7,6 +7,7 @@ from users.models import User
 
 class NiceHabitAPITestCase(APITestCase):
     """Тестирование приятной привычки"""
+
     def setUp(self):
         pass
 
@@ -37,6 +38,7 @@ class NiceHabitAPITestCase(APITestCase):
 
 class RelatedHabitAPITestCase(APITestCase):
     """Тестирование вознаграждения"""
+
     def setUp(self):
         pass
 
@@ -55,6 +57,7 @@ class RelatedHabitAPITestCase(APITestCase):
 
 class GoodHabitAPITestCase(APITestCase):
     """Тестирование полезной привычки"""
+
     def setUp(self):
         self.user = User.objects.create(email="test@mail.ru", telegram_id=10, password="12345")
         self.client = APIClient()

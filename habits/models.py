@@ -4,7 +4,8 @@ from config.settings import AUTH_USER_MODEL
 
 
 class NiceHabit(models.Model):
-    """ Модель приятной привычки. """
+    """Модель приятной привычки."""
+
     place = models.CharField(max_length=100, verbose_name="Место")
     lide_time = models.DateTimeField(verbose_name="Дата и время выполнения привычки")
     action = models.CharField(max_length=500, verbose_name="Действие")
@@ -20,7 +21,8 @@ class NiceHabit(models.Model):
 
 
 class RelatedHabit(models.Model):
-    """ Модель связанной привычки или вознаграждения """
+    """Модель связанной привычки или вознаграждения"""
+
     related_habit = models.ForeignKey(
         NiceHabit, blank=True, null=True, on_delete=models.CASCADE, verbose_name="Связанная привычка"
     )
@@ -38,7 +40,8 @@ class RelatedHabit(models.Model):
 
 
 class GoodHabit(models.Model):
-    """ Модель полезной привычки """
+    """Модель полезной привычки"""
+
     choice_of_periodicity = [
         ("Ежедневно", "Ежедневно"),
         ("Раз в два дня", "Раз в два дня"),

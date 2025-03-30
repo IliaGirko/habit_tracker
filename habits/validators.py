@@ -4,7 +4,8 @@ from rest_framework.serializers import ValidationError
 
 
 class FillingOneFields:
-    """ Валидатор проверки заполенения полей по правилу """
+    """Валидатор проверки заполенения полей по правилу"""
+
     def __init__(self, related_habit, reward):
         self.related_habit = related_habit
         self.reward = reward
@@ -15,7 +16,8 @@ class FillingOneFields:
 
 
 class TimingCheck:
-    """ Валидатор проверки указанного времения выполнения на привычку """
+    """Валидатор проверки указанного времения выполнения на привычку"""
+
     def __init__(self, field):
         self.field = field
 

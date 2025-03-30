@@ -5,7 +5,8 @@ from habits.validators import FillingOneFields, TimingCheck
 
 
 class NiceHabitSerializer(serializers.ModelSerializer):
-    """ Сериализатор приятной привычки """
+    """Сериализатор приятной привычки"""
+
     class Meta:
         model = NiceHabit
         fields = ("place", "lide_time", "action", "time_to_complete", "sing_of_publicity")
@@ -14,7 +15,8 @@ class NiceHabitSerializer(serializers.ModelSerializer):
 
 
 class RelatedHabitSerializer(serializers.ModelSerializer):
-    """ Сериализатор вознаграждения или полезной привычки """
+    """Сериализатор вознаграждения или полезной привычки"""
+
     related_habit = NiceHabitSerializer(read_only=True)
 
     class Meta:
@@ -28,7 +30,8 @@ class RelatedHabitSerializer(serializers.ModelSerializer):
 
 
 class GoodHabitSerializer(serializers.ModelSerializer):
-    """ Сериализатор хорошей привычки """
+    """Сериализатор хорошей привычки"""
+
     related_habit = RelatedHabitSerializer(read_only=True)
 
     class Meta:

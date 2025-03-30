@@ -3,7 +3,8 @@ from django.db import models
 
 
 class User(AbstractUser):
-    """ Модель создания пользователя """
+    """Модель создания пользователя"""
+
     username = None
     email = models.EmailField(unique=True, verbose_name="Email почта")
     telegram_id = models.CharField(max_length=25, default=0, verbose_name="Telegram id")
