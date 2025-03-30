@@ -103,5 +103,5 @@ jobs:
           sudo docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/habit_tracker:latest
           sudo docker stop habit_tracker || true
           sudo docker rm -f habit_tracker || true
-          sudo docker run -d --name habit_tracker -p 80:8080 ${{ secrets.DOCKER_HUB_USERNAME }}/habit_tracker:latest
+          sudo docker run -d --name habit_tracker -p 8080:8000 ${{ secrets.DOCKER_HUB_USERNAME }}/habit_tracker:latest
           E0F0
