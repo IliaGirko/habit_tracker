@@ -70,13 +70,13 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Build Docker image
-        run: docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/online_training:latest -f Dockerfile .
+        run: docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/habit_tracker:latest -f Dockerfile .
 
       - name: Log in Docker hub
         run: echo "${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
 
       - name: Push Docker image in Docker hub
-        run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/online_training:latest
+        run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/habit_tracker:latest
 
   deploy:
     needs: build
@@ -97,8 +97,8 @@ jobs:
       - name: Deploy to server
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}  << 'E0F0'
-          sudo docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/online_training:latest
-          sudo docker stop online_training || true
-          sudo docker rm -f online_training || true
-          sudo docker run -d --name online_training -p 80:8000 ${{ secrets.DOCKER_HUB_USERNAME }}/online_training:latest
+          sudo docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/habit_tracker:latest
+          sudo docker stop habit_tracker || true
+          sudo docker rm -f habit_tracker || true
+          sudo docker run -d --name habit_tracker -p 80:8000 ${{ secrets.DOCKER_HUB_USERNAME }}/habit_tracker:latest
           E0F0
