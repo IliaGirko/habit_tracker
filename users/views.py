@@ -7,7 +7,8 @@ from .serializers import UserModelSerializer
 
 
 class UserViewSet(viewsets.ModelViewSet):
-    """ Вьювсет пользователя """
+    """Вьювсет пользователя"""
+
     serializer_class = UserModelSerializer
     queryset = User.objects.all()
     permission_classes = [AllowAny]
@@ -19,10 +20,12 @@ class UserViewSet(viewsets.ModelViewSet):
 
 
 class UserTokenObtainPairView(views.TokenObtainPairView):
-    """ Вьюшка создания токена """
+    """Вьюшка создания токена"""
+
     permission_classes = [AllowAny]
 
 
 class UserTokenRefreshView(views.TokenRefreshView):
-    """ Вьюшка рефреша токена """
+    """Вьюшка рефреша токена"""
+
     permission_classes = [AllowAny]

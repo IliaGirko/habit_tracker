@@ -10,7 +10,7 @@ from .models import GoodHabit
 
 @shared_task
 def send_mail_time_good_habit():
-    """ Переодическое выполнение задачи отправки писем """
+    """Переодическое выполнение задачи отправки писем"""
     times_good_habit = GoodHabit.objects.all()
     for time_good_habit in times_good_habit:
         if time_good_habit.lide_time == datetime.datetime.now():
