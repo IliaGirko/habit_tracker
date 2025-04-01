@@ -64,4 +64,4 @@ docker-compose logs
 docker-compose down
 ```
 
-Адрес сервера: 84.201.176.62
+Адрес сервера: 89.169.173.119

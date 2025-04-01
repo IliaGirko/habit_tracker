@@ -90,7 +90,7 @@ jobs:
       POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
       POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
       POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
-      POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
+      DATABASE_HOST: ${{ secrets.DATABASE_HOST }}
       POSTGRES_PORT: ${{ secrets.POSTGRES_PORT }}
       TOKEN_TG_BOT: ${{ secrets.TOKEN_TG_BOT }}
       EMAIL_HOST: ${{ secrets.EMAIL_HOST }}
@@ -122,7 +122,7 @@ jobs:
           printf "POSTGRES_DB=%s\n" "$POSTGRES_DB" >> .env
           printf "POSTGRES_USER=%s\n" "$POSTGRES_USER" >> .env
           printf "POSTGRES_PASSWORD=%s\n" "$POSTGRES_PASSWORD" >> .env
-          printf "POSTGRES_HOST=%s\n" "$POSTGRES_HOST" >> .env
+          printf "DATABASE_HOST=%s\n" "$DATABASE_HOST" >> .env
           printf "POSTGRES_PORT=%s\n" "$POSTGRES_PORT" >> .env
           printf "TOKEN_TG_BOT=%s\n" "$TOKEN_TG_BOT" >> .env
           printf "EMAIL_HOST=%s\n" "$EMAIL_HOST" >> .env
