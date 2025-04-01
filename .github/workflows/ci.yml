@@ -129,7 +129,6 @@ jobs:
           echo "DOCKER_HUB_ACCESS_TOKEN=${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}" >> .env
 
           sudo git pull
-          sudo docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/habit_tracker:latest
           sudo docker stop habit_tracker || true
           sudo docker rm -f habit_tracker || true
           sudo docker compose down -v
