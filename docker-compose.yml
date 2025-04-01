@@ -1,6 +1,6 @@
 services:
   web:
-    image: habit_tracker
+    build: .
     env_file:
       - .env
     command: >
