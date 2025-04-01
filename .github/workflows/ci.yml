@@ -100,8 +100,11 @@ jobs:
       - name: Deploy to server
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}  << 'E0F0'
+          sudo cd habit_tracker
+          sudo git pull
           sudo docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/habit_tracker:latest
           sudo docker stop habit_tracker || true
           sudo docker rm -f habit_tracker || true
-          sudo docker run -d --name habit_tracker -p 8080:8000 ${{ secrets.DOCKER_HUB_USERNAME }}/habit_tracker:latest
+          sudo docker compose down -v
+          sudo docker compose up -d --build
           E0F0
