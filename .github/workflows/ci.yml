@@ -115,7 +115,7 @@ jobs:
 
       - name: Deploy to server
         run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}  << 'E0F0'
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}  << E0F0
           cd habit_tracker
           printf "SECRET_KEY=%s\n" "$SECRET_KEY" > .env
           printf "DEBUG=%s\n" "$DEBUG" >> .env
