@@ -97,9 +97,10 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_KEY }}
 
-      - name: Create .env file
+      - name: Deploy to server
         run: |
-          cd habit_tracker
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}  << 'E0F0'
+          sudo cd habit_tracker
           echo "SECRET_KEY=${{ secrets.SECRET_KEY }}" >> .env
           echo "DEBUG=${{ secrets.DEBUG }}" >> .env
           
@@ -127,10 +128,6 @@ jobs:
           echo "DOCKER_HUB_USERNAME=${{ secrets.DOCKER_HUB_USERNAME }}" >> .env
           echo "DOCKER_HUB_ACCESS_TOKEN=${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}" >> .env
 
-      - name: Deploy to server
-        run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}  << 'E0F0'
-          sudo cd habit_tracker
           sudo git pull
           sudo docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/habit_tracker:latest
           sudo docker stop habit_tracker || true
