@@ -101,7 +101,6 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}  << 'E0F0'
           cd habit_tracker
-          echo "SECRET_KEY=${{ secrets.SECRET_KEY }}" >> .env
           echo "DEBUG=${{ secrets.DEBUG }}" >> .env
           
           echo "POSTGRES_DB=${{ secrets.POSTGRES_DB }}" >> .env
@@ -122,12 +121,6 @@ jobs:
           echo "EMAIL_HOST_USER=${{ secrets.EMAIL_HOST_USER }}" >> .env
           echo "EMAIL_HOST_PASSWORD=${{ secrets.EMAIL_HOST_PASSWORD }}" >> .env
           
-          echo "SSH_KEY=${{ secrets.SSH_KEY }}" >> .env
-          echo "SSH_USER=${{ secrets.SSH_USER }}" >> .env
-          echo "SERVER_IP=${{ secrets.SERVER_IP }}" >> .env
-          echo "DOCKER_HUB_USERNAME=${{ secrets.DOCKER_HUB_USERNAME }}" >> .env
-          echo "DOCKER_HUB_ACCESS_TOKEN=${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}" >> .env
-
           sudo git pull
           sudo docker stop habit_tracker || true
           sudo docker rm -f habit_tracker || true
