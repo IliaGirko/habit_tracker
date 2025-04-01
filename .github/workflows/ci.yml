@@ -101,23 +101,19 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}  << 'E0F0'
           cd habit_tracker
-          echo "DEBUG=${{ secrets.DEBUG }}" >> .env
-          
-          echo "POSTGRES_DB=${{ secrets.POSTGRES_DB }}" >> .env
-          echo "POSTGRES_USER=${{ secrets.POSTGRES_USER }}" >> .env
-          echo "POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}" >> .env
-          echo "POSTGRES_HOST=${{ secrets.POSTGRES_HOST }}" >> .env
-          echo "POSTGRES_PORT=${{ secrets.POSTGRES_PORT }}" >> .env
-          
-          echo "TOKEN_TG_BOT=${{ secrets.TOKEN_TG_BOT }}" >> .env
-         
-          echo "EMAIL_HOST=${{ secrets.EMAIL_HOST }}" >> .env
-          echo "EMAIL_PORT=${{ secrets.EMAIL_PORT }}" >> .env
-          echo "EMAIL_USE_TLS=${{ secrets.EMAIL_USE_TLS }}" >> .env
-          echo "EMAIL_USE_SSL=${{ secrets.EMAIL_USE_SSL }}" >> .env
-          echo "EMAIL_HOST_USER=${{ secrets.EMAIL_HOST_USER }}" >> .env
-          echo "EMAIL_HOST_PASSWORD=${{ secrets.EMAIL_HOST_PASSWORD }}" >> .env
-          
+          printf "DEBUG=%s\n" "${{ secrets.DEBUG }}" > .env
+          printf "POSTGRES_DB=%s\n" "${{ secrets.POSTGRES_DB }}" >> .env
+          printf "POSTGRES_USER=%s\n" "${{ secrets.POSTGRES_USER }}" >> .env
+          printf "POSTGRES_PASSWORD=%s\n" "${{ secrets.POSTGRES_PASSWORD }}" >> .env
+          printf "POSTGRES_HOST=%s\n" "${{ secrets.POSTGRES_HOST }}" >> .env
+          printf "POSTGRES_PORT=%s\n" "${{ secrets.POSTGRES_PORT }}" >> .env
+          printf "TOKEN_TG_BOT=%s\n" "${{ secrets.TOKEN_TG_BOT }}" >> .env
+          printf "EMAIL_HOST=%s\n" "${{ secrets.EMAIL_HOST }}" >> .env
+          printf "EMAIL_PORT=%s\n" "${{ secrets.EMAIL_PORT }}" >> .env
+          printf "EMAIL_USE_TLS=%s\n" "${{ secrets.EMAIL_USE_TLS }}" >> .env
+          printf "EMAIL_USE_SSL=%s\n" "${{ secrets.EMAIL_USE_SSL }}" >> .env
+          printf "EMAIL_HOST_USER=%s\n" "${{ secrets.EMAIL_HOST_USER }}" >> .env
+          printf "EMAIL_HOST_PASSWORD=%s\n" "${{ secrets.EMAIL_HOST_PASSWORD }}" >> .env
           sudo git pull
           sudo docker stop habit_tracker || true
           sudo docker rm -f habit_tracker || true
