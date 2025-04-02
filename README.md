@@ -41,7 +41,7 @@ Total coverage - 87%
 ### Запуск проекта
 1. Клонируйте репозиторий:
 ```
-https://github.com/IliaGirko/habit_tracker.git
+git clone https://github.com/IliaGirko/habit_tracker.git -b feature/task03
 ```
 2. Создайте файл .env в корне проекта и добавьте туда необходимые переменные окружения, указанные в файле .env.example.
 3. Запустите проект, выполнив команду для запуска в фоновом режиме:
@@ -64,4 +64,4 @@ docker-compose logs
 docker-compose down
 ```
 
-Адрес сервера: 89.169.173.119
+Адрес сервера: 89.169.173.119:8080
